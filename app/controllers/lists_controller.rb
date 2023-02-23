@@ -1,0 +1,42 @@
+class ListsController < ApplicationController
+  before_action :set_list, only: %i[show edit update destroy list]
+
+  # GET /lists
+  def index
+    @lists = List.all
+  end
+
+  # GET /lists/1
+  def show
+  end
+
+  # GET /lists/new
+  def new
+    @list = List.new
+  end
+
+  # GET /lists/1/edit
+  def edit
+  end
+
+  # POST /lists
+  def create
+    @list = List.new(list_params)
+
+    if @list.save
+      redirect_to lists_path, notice: "List was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def set_list
+    @list = List.find(params[:id])
+  end
+
+  def list_params
+    params.require(:list).permit(:name)
+  end
+end
