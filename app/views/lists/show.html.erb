@@ -2,7 +2,6 @@
 <h1>This is my  <%= @list.name %> List</h1>
 <%# </div> %>
 <div>
-<p>COucou</p>
 <%= link_to "Add a movie bookmark", new_list_bookmark_path(@list) %>
   <ul>
     <% @list.bookmarks.each do |bookmark| %>
